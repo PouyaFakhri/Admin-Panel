@@ -23,7 +23,6 @@ function LoginForm() {
           alt="لوگوی بوتواستارت"
           width={80}
           height={85}
-          style={{ width: `100%`, height: `auto` }}
           priority
         />
         <p className={styles.formTitle}>فرم ورود </p>
