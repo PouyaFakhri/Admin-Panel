@@ -9,12 +9,10 @@ export const getTokenFromClient = () => {
   return tokenCookie ? tokenCookie.split("=")[1] : null;
 };
 
-export const getTokenFromServer = (cookieHeader = "") => {
-  const cookie = cookieHeader.split("; ");
-  const tokenCookie = cookie.find((item) => item.startsWith("token="));
-  return tokenCookie ? tokenCookie.split("=")[1] : null
+export const getTokenFromServer = (req) => {
+  return req.cookies?.token || null
 };
 
 export const deleteCookie = () => {
-  document.cookie = `token=; path="/"; max-age=0`;
+  document.cookie = `token=; path="/"; Max-Age=0`;
 };
