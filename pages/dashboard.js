@@ -14,7 +14,6 @@ function dashboard({products}) {
 export default dashboard;
 
 export async function getServerSideProps(context) {
-  console.log(context)
   const { req } = context;
   const token = getTokenFromServer(req)
   const products = await api.get("/products" , {token} );
