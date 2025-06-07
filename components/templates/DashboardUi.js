@@ -2,12 +2,13 @@ import Image from "next/image";
 import Search from "../../public/icons/search";
 import Profile from "../../public/icons/profile";
 import Logout from "../../public/icons/logout";
-import styles from "./Dashborad.module.css"
+import styles from "./DashboradUi.module.css";
+import CreateProduct from "../modules/createProduct";
 
-function DashboardUi({ products }) {
-  console.log(products);
+function DashboardUi({ data }) {
+  const products = data?.data;
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.header}>
         <Search />
         <input type="search" placeholder=" جستجو کالا" />
@@ -35,7 +36,7 @@ function DashboardUi({ products }) {
         </div>{" "}
         <button type="submit">افزودن محصول </button>
       </div>
-      <div className={styles.productManagement} >
+      <div className={styles.productManagement}>
         <table>
           <thead className={styles.thead}>
             <tr className={styles.tabelHeader}>
@@ -46,10 +47,14 @@ function DashboardUi({ products }) {
               <th className={styles.options}></th>
             </tr>
           </thead>
-          <tbody className={styles.tbody}></tbody>
+          <tbody className={styles.tbody}>
+            {products?.map((product) => {
+              return <CreateProduct key={product.id} {...product} />;
+            })}
+          </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 }
 
