@@ -4,7 +4,7 @@ import Profile from "../../public/icons/profile";
 import Logout from "../../public/icons/logout";
 import styles from "./Dashborad.module.css"
 
-function Dashboard({ products }) {
+function DashboardUi({ products }) {
   console.log(products);
   return (
     <>
@@ -53,4 +53,4 @@ function Dashboard({ products }) {
   );
 }
 
-export default Dashboard;
+export default DashboardUi;
