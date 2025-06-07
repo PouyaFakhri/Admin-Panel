@@ -4,16 +4,32 @@ import styles from "./RegisterForm.module.css";
 import { RegisterSchema } from "../../utils/schema";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { UseRegisterUser } from "../../lib/queryHooks";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 function RegisterForm() {
   const schema = RegisterSchema();
+  const router = useRouter();
+  const { mutate, error } = UseRegisterUser();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
   const onSubmit = (data) => {
-    console.log(data);
+    const { ConfirmPassword, ...finalData } = data;
+    mutate(finalData, {
+      onSuccess: () => {
+        toast.success("ثبت نام با موفقیت انجام شد");
+        router.replace("/");
+      },
+      onError: () => {
+        error.response?.data?.message === "User already exists"
+          ? toast.error("این نام کاربری قبلاً ثبت شده است")
+          : toast.error("خطایی رخ داده است ، لطفاً دوباره تلاش کنید");
+      },
+    });
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.formBox}>
