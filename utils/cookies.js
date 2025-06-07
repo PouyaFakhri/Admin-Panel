@@ -1,5 +1,6 @@
 export const setToken = (token) => {
-  document.cookie = `token=${token}; path = "/"; max-age={30 * 24 * 60 * 60}`;
+  const maxAge = 30 * 24 * 60 * 60
+  document.cookie = `token=${token}; path =/; Max-Age=${maxAge}`;
 };
 
 export const getTokenFromClient = () => {

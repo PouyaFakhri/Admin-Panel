@@ -4,8 +4,14 @@ import styles from "./LoginForm.module.css";
 import { LoginSchema } from "../../utils/schema";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { UseLoginUser } from "../../lib/queryHooks";
+import { setToken } from "../../utils/cookies";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 function LoginForm() {
+  const { mutate, error } = UseLoginUser();
+  const router = useRouter();
   const schema = LoginSchema();
   const {
     register,
@@ -13,7 +19,17 @@ function LoginForm() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
   const onSubmit = (data) => {
-    console.log(data);
+    mutate(data, {
+      onSuccess: (res) => {
+        setToken(res.token);
+        router.replace("/dashboard");
+      },
+      onError: () => {
+        error.response.data.message === "Invalid credentials"
+          ? toast.error("نام کاربری یا رمز عبور اشتباه است")
+          : toast.error("خطایی رخ داده است");
+      },
+    });
   };
   return (
     <form className={styles.formBox} onSubmit={handleSubmit(onSubmit)}>
