@@ -1,7 +1,7 @@
 function Logout() {
   return (
     <svg
-      className="logout"
+      style={{ marginTop: "10px", cursor: "pointer" }}
       version="1.1"
       id="Layer_1"
       x="0px"

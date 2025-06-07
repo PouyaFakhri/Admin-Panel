@@ -2,27 +2,28 @@ import Image from "next/image";
 import Search from "../../public/icons/search";
 import Profile from "../../public/icons/profile";
 import Logout from "../../public/icons/logout";
+import styles from "./Dashborad.module.css"
 
 function Dashboard({ products }) {
   console.log(products);
   return (
     <>
-      <div className="header">
+      <div className={styles.header}>
         <Search />
         <input type="search" placeholder=" جستجو کالا" />
-        <div className="headersprof">
+        <div className={styles.headersprof}>
           <Profile />
           <div>
             <h5>pouyaf98</h5>
             <p>مدیر</p>
           </div>
         </div>
-        <div className="headerslog">
+        <div className={styles.headerslog}>
           <Logout />
           <p>خروج</p>
         </div>
       </div>
-      <div className="addproduct">
+      <div className={styles.addproduct}>
         <div>
           <Image
             src="/images/setting-3.png"
@@ -34,18 +35,18 @@ function Dashboard({ products }) {
         </div>{" "}
         <button type="submit">افزودن محصول </button>
       </div>
-      <div className="productManagement">
+      <div className={styles.productManagement} >
         <table>
-          <thead className="thead">
-            <tr className="tabelHeader">
+          <thead className={styles.thead}>
+            <tr className={styles.tabelHeader}>
               <th> نام کالا</th>
               <th> موجودی </th>
               <th> قیمت</th>
               <th> شناسه کالا </th>
-              <th className="options"></th>
+              <th className={styles.options}></th>
             </tr>
           </thead>
-          <tbody className="tbody"></tbody>
+          <tbody className={styles.tbody}></tbody>
         </table>
       </div>
     </>
