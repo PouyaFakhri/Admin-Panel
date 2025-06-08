@@ -7,12 +7,18 @@ import CreateProduct from "../modules/createProduct";
 import { UseGetProducts } from "../../lib/queryHooks";
 import { useState } from "react";
 import DeleteModal from "../modules/deleteModal";
+import AddOrEditProduct from "../modules/addOrEditProduct";
+import { deleteCookie } from "../../utils/cookies";
+import { useRouter } from "next/router";
 
 function DashboardUi({ ssrData }) {
   const [showDelModal, setShowDelModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [isEditModal, setIsEditModal] = useState(false);
   const [productId, setProductId] = useState();
   const [searchKey, setSearchKey] = useState("");
-  const { data, isFetching } = UseGetProducts({
+  const router = useRouter()
+  const { data } = UseGetProducts({
     page: 1,
     limit: 10,
     name: searchKey,
@@ -36,7 +42,12 @@ function DashboardUi({ ssrData }) {
           </div>
         </div>
         <div className={styles.headerslog}>
-          <Logout />
+          <Logout
+            onClick={() => {
+              deleteCookie();
+              router.replace("/");
+            }}
+          />
           <p>خروج</p>
         </div>
       </div>
@@ -50,7 +61,9 @@ function DashboardUi({ ssrData }) {
           />
           <p>مدیریت کالا</p>
         </div>{" "}
-        <button type="submit">افزودن محصول </button>
+        <button type="submit" onClick={() => setShowModal(true)}>
+          افزودن محصول{" "}
+        </button>
       </div>
       <div className={styles.productManagement}>
         <table>
@@ -68,13 +81,26 @@ function DashboardUi({ ssrData }) {
               return (
                 <CreateProduct
                   key={product.id}
-                  props={{ product, setShowDelModal , setProductId}}
+                  props={{
+                    product,
+                    setShowDelModal,
+                    setProductId,
+                    setShowModal,
+                    setIsEditModal,
+                  }}
                 />
               );
             })}
           </tbody>
         </table>
-         {showDelModal ? <DeleteModal props={{productId , setShowDelModal}} /> : null}
+        {showDelModal ? (
+          <DeleteModal props={{ productId, setShowDelModal }} />
+        ) : null}
+        {showModal ? (
+          <AddOrEditProduct
+            props={{ isEditModal, setIsEditModal, setShowModal, productId }}
+          />
+        ) : null}
       </div>
     </div>
   );

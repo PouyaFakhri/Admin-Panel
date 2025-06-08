@@ -40,3 +40,22 @@ export const RegisterSchema = () => {
   });
   return schema;
 };
+
+export const AddProductSchema = () => {
+  const schema = yup.object().shape({
+    name: yup.string().required(" نام کالا الزامی است"),
+    quantity: yup
+      .number()
+      .required(" تعداد کالا الزامی است")
+      .integer()
+      .typeError()
+      .positive(" حداقل موجودی یک عدد است"),
+    price: yup
+      .number()
+      .required("قیمت محصول الزامی است")
+      .typeError()
+      .positive("قیمت را به درستی وارد نمایید "),
+  });
+
+  return schema
+};

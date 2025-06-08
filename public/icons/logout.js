@@ -1,6 +1,7 @@
-function Logout() {
+function Logout(props) {
   return (
     <svg
+      {...props}
       style={{ marginTop: "10px", cursor: "pointer" }}
       version="1.1"
       id="Layer_1"
