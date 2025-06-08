@@ -1,11 +1,12 @@
 import DashboardUi from "../components/templates/DashboardUi";
 import { getTokenFromServer } from "../utils/cookies";
-import api from "../lib/axiosConfig"
+import api from "../lib/axiosConfig";
+import { decodeJwt } from "../utils/jwt";
 
-function Dashboard({data}) {
+function Dashboard({ data, userName }) {
   return (
     <>
-      <DashboardUi ssrData = {data?.data}/>
+      <DashboardUi ssrData={data?.data} userName={userName} />
     </>
   );
 }
@@ -14,12 +15,14 @@ export default Dashboard;
 
 export async function getServerSideProps(context) {
   const { req } = context;
-  const token = getTokenFromServer(req)
-  const data = await api.get("/products" , {token} );
- 
+  const token = getTokenFromServer(req);
+  const userName = await decodeJwt(token);
+  const data = await api.get("/products", { token });
+
   return {
     props: {
       data,
+      userName,
     },
   };
 }

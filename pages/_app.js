@@ -7,7 +7,14 @@ function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Component {...pageProps} />
-      <ToastContainer position="top-right" autoClose={2000} theme="colored"/>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        theme="dark"
+        toastClassName="epic-toast"
+        bodyClassName="epic-toast-body"
+        progressClassName="epic-toast-progress"
+      />
     </QueryClientProvider>
   );
 }

@@ -11,7 +11,7 @@ import AddOrEditProduct from "../modules/addOrEditProduct";
 import { deleteCookie } from "../../utils/cookies";
 import { useRouter } from "next/router";
 
-function DashboardUi({ ssrData }) {
+function DashboardUi({ ssrData , userName }) {
   const [showDelModal, setShowDelModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isEditModal, setIsEditModal] = useState(false);
@@ -37,7 +37,7 @@ function DashboardUi({ ssrData }) {
         <div className={styles.headersprof}>
           <Profile />
           <div>
-            <h5>pouyaf98</h5>
+            <h5>{userName}</h5>
             <p>مدیر</p>
           </div>
         </div>
