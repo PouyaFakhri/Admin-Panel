@@ -11,19 +11,24 @@ import AddOrEditProduct from "../modules/addOrEditProduct";
 import { deleteCookie } from "../../utils/cookies";
 import { useRouter } from "next/router";
 
-function DashboardUi({ ssrData , userName }) {
+function DashboardUi({ ssrData, userName }) {
   const [showDelModal, setShowDelModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isEditModal, setIsEditModal] = useState(false);
+  const [editProduct, setEditProduct] = useState({});
   const [productId, setProductId] = useState();
   const [searchKey, setSearchKey] = useState("");
-  const router = useRouter()
+  const router = useRouter();
   const { data } = UseGetProducts({
     page: 1,
     limit: 10,
     name: searchKey,
     ssrData,
   });
+  const productAdder = () => {
+    setEditProduct({})
+    setShowModal(true);
+  };
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -61,7 +66,7 @@ function DashboardUi({ ssrData , userName }) {
           />
           <p>مدیریت کالا</p>
         </div>{" "}
-        <button type="submit" onClick={() => setShowModal(true)}>
+        <button type="submit" onClick={productAdder}>
           افزودن محصول{" "}
         </button>
       </div>
@@ -87,6 +92,7 @@ function DashboardUi({ ssrData , userName }) {
                     setProductId,
                     setShowModal,
                     setIsEditModal,
+                    setEditProduct,
                   }}
                 />
               );
@@ -98,7 +104,13 @@ function DashboardUi({ ssrData , userName }) {
         ) : null}
         {showModal ? (
           <AddOrEditProduct
-            props={{ isEditModal, setIsEditModal, setShowModal, productId }}
+            props={{
+              isEditModal,
+              setIsEditModal,
+              setShowModal,
+              productId,
+              editProduct
+            }}
           />
         ) : null}
       </div>

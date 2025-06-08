@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 function RegisterForm() {
   const schema = RegisterSchema();
   const router = useRouter();
-  const { mutate, error } = UseRegisterUser();
+  const { mutate } = UseRegisterUser();
   const {
     register,
     handleSubmit,
@@ -24,7 +24,7 @@ function RegisterForm() {
         toast.success("ثبت نام با موفقیت انجام شد");
         router.replace("/");
       },
-      onError: () => {
+      onError: (error) => {
         error.response?.data?.message === "User already exists"
           ? toast.error("این نام کاربری قبلاً ثبت شده است")
           : toast.error("خطایی رخ داده است ، لطفاً دوباره تلاش کنید");

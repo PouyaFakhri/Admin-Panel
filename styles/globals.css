@@ -36,7 +36,7 @@ body {
 }
 
 .epic-toast {
-  width: 300px;
+  width: 330px;
   background: linear-gradient(135deg, rgba(248, 247, 247, 0.8), rgba(9, 95, 242, 0.6)) !important;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(5, 245, 221, 0.1) !important;

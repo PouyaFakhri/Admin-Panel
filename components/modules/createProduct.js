@@ -3,7 +3,7 @@ import Trash from "../../public/icons/trash";
 import styles from "./createProduct.module.css";
 
 function CreateProduct({ props }) {
-  const { product, setShowDelModal , setProductId , setShowModal , setIsEditModal} = props;
+  const { product, setShowDelModal , setProductId , setShowModal , setIsEditModal , setEditProduct} = props;
   const { id, name, quantity, price } = product
   const deleteHandler = () => {
     setProductId(id)
@@ -13,6 +13,7 @@ function CreateProduct({ props }) {
     setProductId(id)
     setShowModal(true)
     setIsEditModal(true)
+    setEditProduct({name, quantity, price})
   };
   return (
     <tr className={styles.tabelLine}>

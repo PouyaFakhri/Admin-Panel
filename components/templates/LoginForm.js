@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 
 function LoginForm() {
-  const { mutate, error } = UseLoginUser();
+  const { mutate } = UseLoginUser();
   const router = useRouter();
   const schema = LoginSchema();
   const {
@@ -24,7 +24,7 @@ function LoginForm() {
         setToken(res.token);
         router.replace("/dashboard");
       },
-      onError: () => {
+      onError: (error) => {
         error.response.data.message === "Invalid credentials"
           ? toast.error("نام کاربری یا رمز عبور اشتباه است")
           : toast.error("خطایی رخ داده است");

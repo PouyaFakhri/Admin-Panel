@@ -6,9 +6,11 @@ import { useQueryClient } from "@tanstack/react-query";
 import { UseEditProduct } from "../../lib/queryHooks";
 import { UseAddProduct } from "../../lib/queryHooks";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 function AddOrEditProduct({ props }) {
-  const { isEditModal, setIsEditModal, setShowModal, productId } = props;
+  const { isEditModal, setIsEditModal, setShowModal, productId, editProduct } =
+    props;
   const queryclient = useQueryClient();
   const { mutate, error } = isEditModal ? UseEditProduct() : UseAddProduct();
   const schema = AddProductSchema();
@@ -16,11 +18,21 @@ function AddOrEditProduct({ props }) {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({ resolver: yupResolver(schema) });
   const OnClose = () => {
     setShowModal(false);
     setIsEditModal(false);
   };
+  useEffect(() => {
+    if (isEditModal) {
+      reset({
+        name: editProduct.name,
+        price: editProduct.price,
+        quantity: editProduct.quantity,
+      });
+    }
+  }, []);
   const onSubmit = (data) => {
     isEditModal
       ? mutate(
@@ -66,7 +78,7 @@ function AddOrEditProduct({ props }) {
               type="text"
               id="name"
               {...register("name")}
-              placeholder="نام کالا"
+              placeholder={editProduct.name || " نام کالا"}
             />
             <p className={styles.error}>{errors.name?.message}</p>
           </div>
@@ -76,7 +88,7 @@ function AddOrEditProduct({ props }) {
               type="number"
               id="quantity"
               {...register("quantity")}
-              placeholder="تعداد موجودی"
+              placeholder={editProduct.quantity || " تعداد موجودی "}
             />
             <p className={styles.error}>{errors.quantity?.message}</p>
           </div>
@@ -86,7 +98,7 @@ function AddOrEditProduct({ props }) {
               type="number"
               id="price"
               {...register("price")}
-              placeholder="قیمت"
+              placeholder={editProduct.price || " قیمت "}
             />
             <p className={styles.error}>{errors.price?.message}</p>
           </div>
