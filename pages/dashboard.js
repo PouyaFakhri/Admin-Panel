@@ -6,7 +6,7 @@ import { decodeJwt } from "../utils/jwt";
 function Dashboard({ data, userName }) {
   return (
     <>
-      <DashboardUi ssrData={data?.data} userName={userName} />
+      <DashboardUi ssrData={data?.data} userName={userName}/>
     </>
   );
 }
@@ -17,7 +17,7 @@ export async function getServerSideProps(context) {
   const { req } = context;
   const token = getTokenFromServer(req);
   const userName = await decodeJwt(token);
-  const data = await api.get("/products", { token });
+  const data = await api.get("/products?limit=10", { token });
 
   return {
     props: {

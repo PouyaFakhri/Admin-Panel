@@ -10,8 +10,10 @@ import DeleteModal from "../modules/deleteModal";
 import AddOrEditProduct from "../modules/addOrEditProduct";
 import { deleteCookie } from "../../utils/cookies";
 import { useRouter } from "next/router";
+import Pagination from "../modules/pagination";
 
 function DashboardUi({ ssrData, userName }) {
+  const [page, setPage] = useState(1);
   const [showDelModal, setShowDelModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isEditModal, setIsEditModal] = useState(false);
@@ -20,13 +22,14 @@ function DashboardUi({ ssrData, userName }) {
   const [searchKey, setSearchKey] = useState("");
   const router = useRouter();
   const { data } = UseGetProducts({
-    page: 1,
-    limit: 10,
+    page: page,
     name: searchKey,
+    limit: 10,
     ssrData,
   });
+  const totalPages = data.totalPages || 1
   const productAdder = () => {
-    setEditProduct({})
+    setEditProduct({});
     setShowModal(true);
   };
   return (
@@ -109,11 +112,12 @@ function DashboardUi({ ssrData, userName }) {
               setIsEditModal,
               setShowModal,
               productId,
-              editProduct
+              editProduct,
             }}
           />
         ) : null}
       </div>
+      <Pagination value={{ page, setPage, totalPages }} />
     </div>
   );
 }
