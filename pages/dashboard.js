@@ -5,7 +5,7 @@ import api from "../lib/axiosConfig"
 function Dashboard({data}) {
   return (
     <>
-      <DashboardUi data = {data}/>
+      <DashboardUi ssrData = {data?.data}/>
     </>
   );
 }

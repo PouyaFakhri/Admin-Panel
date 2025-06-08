@@ -1,6 +1,7 @@
-function Edit() {
+function Edit(props) {
   return (
     <svg
+      {...props}
       className="w-[20px] h-[20px] text-gray-800 dark:text-white"
       aria-hidden="true"
       width="20px"

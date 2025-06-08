@@ -4,14 +4,30 @@ import Profile from "../../public/icons/profile";
 import Logout from "../../public/icons/logout";
 import styles from "./DashboradUi.module.css";
 import CreateProduct from "../modules/createProduct";
+import { UseGetProducts } from "../../lib/queryHooks";
+import { useState } from "react";
+import DeleteModal from "../modules/deleteModal";
 
-function DashboardUi({ data }) {
-  const products = data?.data;
+function DashboardUi({ ssrData }) {
+  const [showDelModal, setShowDelModal] = useState(false);
+  const [productId, setProductId] = useState();
+  const [searchKey, setSearchKey] = useState("");
+  const { data, isFetching } = UseGetProducts({
+    page: 1,
+    limit: 10,
+    name: searchKey,
+    ssrData,
+  });
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <Search />
-        <input type="search" placeholder=" جستجو کالا" />
+        <input
+          type="search"
+          placeholder=" جستجو کالا"
+          value={searchKey}
+          onChange={(e) => setSearchKey(e.target.value)}
+        />
         <div className={styles.headersprof}>
           <Profile />
           <div>
@@ -48,11 +64,17 @@ function DashboardUi({ data }) {
             </tr>
           </thead>
           <tbody className={styles.tbody}>
-            {products?.map((product) => {
-              return <CreateProduct key={product.id} {...product} />;
+            {data?.data?.map((product) => {
+              return (
+                <CreateProduct
+                  key={product.id}
+                  props={{ product, setShowDelModal , setProductId}}
+                />
+              );
             })}
           </tbody>
         </table>
+         {showDelModal ? <DeleteModal props={{productId , setShowDelModal}} /> : null}
       </div>
     </div>
   );
