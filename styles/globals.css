@@ -86,7 +86,6 @@ body {
   background: linear-gradient(135deg, #eae7e7, #b91c1c) !important;
 }
 
-
 .pagination {
   display: flex;
   justify-content: center;
@@ -98,7 +97,7 @@ body {
 }
 
 .pagination button {
-  font-family: 'vazirmatin', sans-serif;
+  font-family: "vazirmatin", sans-serif;
   font-size: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -115,7 +114,8 @@ body {
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .page-item:hover {
@@ -174,4 +174,45 @@ body {
   opacity: 0.7;
   cursor: not-allowed;
   box-shadow: none;
+}
+
+@media (max-width: 480px) {
+  .epic-toast {
+    width: 80%;
+    max-width: 220px;
+    font-size: 12px !important;
+    padding: 3px 3px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+    margin-top: 10px;
+  }
+
+  .epic-toast-body {
+    line-height: 1.3 !important;
+  }
+
+  .Toastify__close-button {
+    font-size: 12px !important;
+  }
+
+  .epic-toast-progress {
+    height: 2px !important;
+    border-radius: 3px !important;
+  }
+
+  .pagination {
+    gap: 4px;
+    padding: 0.75rem;
+  }
+
+  .page-item {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+  .page-item-nav {
+    font-size: 12px;
+    padding: 0 8px;
+    border-radius: 6px;
+  }
 }

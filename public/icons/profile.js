@@ -1,12 +1,13 @@
+import styles from "../../components/templates/DashboradUi.module.css"
+
 function Profile() {
   return (
     <svg
+      className={styles.profileimage}
       version="1.1"
       id="Layer_1"
       x="0px"
       y="0px"
-      width="35px"
-      height="35px"
       viewBox="0 0 122.9 122.9"
       enableBackground="new 0 0 122.9 122.9"
     >

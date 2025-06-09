@@ -43,7 +43,7 @@ function DashboardUi({ ssrData, userName }) {
           onChange={(e) => setSearchKey(e.target.value)}
         />
         <div className={styles.headersprof}>
-          <Profile />
+          <Profile/>
           <div>
             <h5>{userName}</h5>
             <p>مدیر</p>
@@ -62,6 +62,7 @@ function DashboardUi({ ssrData, userName }) {
       <div className={styles.addproduct}>
         <div>
           <Image
+          className={styles.settingImage}
             src="/images/setting-3.png"
             alt="مدیریت کالا"
             width={30}
@@ -78,7 +79,7 @@ function DashboardUi({ ssrData, userName }) {
           <thead className={styles.thead}>
             <tr className={styles.tabelHeader}>
               <th> نام کالا</th>
-              <th> موجودی </th>
+              <th > موجودی </th>
               <th> قیمت</th>
               <th> شناسه کالا </th>
               <th className={styles.options}></th>

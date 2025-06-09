@@ -100,3 +100,55 @@
   align-self: flex-start;
   margin-right: 10px;
 }
+
+@media (max-width: 480px) {
+  .formBox {
+    width: 85%;
+    max-width: 85%;
+  }
+
+  .formBox input,
+  .formBox button {
+    width: 70vw;
+    height: 43px;
+    line-height: 43px;
+    margin-top: -5px;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .formBox button {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .formBox input::placeholder {
+    font-size: 14px;
+  }
+
+  .formTitle {
+    font-size: 20px;
+    margin-top: 8px;
+  }
+
+  .link {
+    width: 100%;
+    margin-right: 20px;
+    margin-top: 10px;
+    font-size: 13px;
+    text-align: right;
+  }
+
+  .error {
+    font-size: 11px;
+    margin-right: 5px;
+  }
+
+  .formTop img {
+    width: 60px;
+    height: 65px;
+  }
+}

@@ -1,21 +1,53 @@
-
 .tabelLine {
-    width: 100%;
-    height: 60px;
-    padding: 0px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    text-align: right;
+  width: 100%;
+  height: 60px;
+  padding: 0px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: right;
 }
 
 .tabelLine td {
-    text-align: right;
-    width: 20%;
+  text-align: center;
+  width: 20%;
 }
 
 .options {
-    display: flex;
-    gap: 10px;
-    justify-content: flex-end;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+@media (max-width: 480px) {
+  .tabelLine {
+    height: 45px;
+    padding: 0 15px;
+  }
+
+  .tabelLine td:nth-child(1) {
+    padding: 0px;
+    padding-right: 20%;
+    width: 30%;
+  }
+
+  .tabelLine td:nth-child(2) {
+    width: 13%;
+  }
+
+  .tabelLine td:nth-child(3) {
+    width: 18%;
+  }
+
+  .tabelLine td:nth-child(4) {
+    width: 27%;
+  }
+
+  .tabelLine td:nth-child(5) {
+    width: 13%;
+  }
+
+  .options {
+    gap: 5px;
+  }
 }
