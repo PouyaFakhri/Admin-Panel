@@ -1,7 +1,7 @@
 import DashboardUi from "../components/templates/DashboardUi";
 import { getTokenFromServer } from "../utils/cookies";
 import api from "../lib/axiosConfig";
-import { decodeJwt } from "../utils/jwt";
+import { DecodeJwt } from "../utils/jwt";
 
 function Dashboard({ data, userName }) {
   return (
@@ -16,7 +16,7 @@ export default Dashboard;
 export async function getServerSideProps(context) {
   const { req } = context;
   const token = getTokenFromServer(req);
-  const userName = await decodeJwt(token);
+  const userName = await DecodeJwt(token);
   const data = await api.get("/products?limit=10", { token });
 
   return {

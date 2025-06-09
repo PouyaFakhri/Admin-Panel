@@ -26,7 +26,7 @@ function DeleteModal({ props }) {
     <div className={styles.container}>
       <div className={styles.modal}>
         <Image
-          src="/images/close.png"
+          src="/images/Close.png"
           alt="حذف"
           width={96}
           height={98}

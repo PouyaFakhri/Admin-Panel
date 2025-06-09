@@ -1,4 +1,4 @@
-export function decodeJwt(token) {
+export function DecodeJwt(token) {
   try {
     const base64Url = token.split(".")[1];
     if (!base64Url) return null;
