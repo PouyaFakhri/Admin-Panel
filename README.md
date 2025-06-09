@@ -3,7 +3,7 @@
 
 ## نسخه آنلاین
 پروژه رو می‌تونید به‌صورت زنده اینجا ببینید
-🔗(https://admin-panel-bwn0i3gd9-pouyafakhris-projects.vercel.app)
+🔗(https://admin-panel-nxlb-m2y7igbj1-pouyafakhris-projects.vercel.app/)
 
 ویژگی‌ها
 - مدیریت محصولات:
