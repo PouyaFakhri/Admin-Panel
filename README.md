@@ -24,9 +24,10 @@
   - React-Query (مدیریت داده‌های سمت سرور)
   - Axios (درخواست‌های HTTP)
   - React-Hook-Form با Yup (مدیریت و اعتبارسنجی فرم‌ها)
-نصب و راه‌اندازی
-۱. کلون کردن مخزن:
+  
+- نصب و راه‌اندازی:
 
+۱. کلون کردن مخزن:
 git clone https://github.com/your-username/NextJs-Admin-Panel.git // cd NextJs-Admin-Panel
 
 ۲. نصب وابستگی‌های فرانت‌اند: npm install
