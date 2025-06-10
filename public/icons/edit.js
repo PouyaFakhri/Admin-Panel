@@ -1,11 +1,10 @@
+import styles from "../../components/modules/createProduct.module.css";
 function Edit(props) {
   return (
     <svg
       {...props}
-      className="w-[20px] h-[20px] text-gray-800 dark:text-white"
+      className={styles.editLogo}
       aria-hidden="true"
-      width="20px"
-      height="20px"
       fill="none"
       viewBox="0 0 24 24"
       style={{ cursor: "pointer", color: "#4ADE80" }}

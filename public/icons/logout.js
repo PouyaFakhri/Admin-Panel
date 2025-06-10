@@ -1,14 +1,14 @@
+import styles from "../../components/templates/DashboradUi.module.css";
+
 function Logout(props) {
   return (
     <svg
       {...props}
-      style={{ marginTop: "10px", cursor: "pointer" }}
+      className={styles.logoutimage}
       version="1.1"
       id="Layer_1"
       x="0px"
       y="0px"
-      width="25px"
-      height="25px"
       viewBox="0 0 91.839 122.88"
       enableBackground="new 0 0 91.839 122.88"
     >

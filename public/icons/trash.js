@@ -1,11 +1,11 @@
+import styles from "../../components/modules/createProduct.module.css";
+
 function Trash(props) {
   return (
     <svg
       {...props}
-      className="w-[20px] h-[20px] text-gray-800 dark:text-white"
+      className={styles.trashLogo}
       aria-hidden="true"
-      width="20px"
-      height="20px"
       fill="none"
       style={{ cursor: "pointer", color: "#F43F5E" }}
       viewBox="0 0 24 24"

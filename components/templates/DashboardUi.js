@@ -27,7 +27,7 @@ function DashboardUi({ ssrData, userName }) {
     limit: 10,
     ssrData,
   });
-  const totalPages = data.totalPages || 1
+  const totalPages = data.totalPages || 1;
   const productAdder = () => {
     setEditProduct({});
     setShowModal(true);
@@ -43,26 +43,27 @@ function DashboardUi({ ssrData, userName }) {
           onChange={(e) => setSearchKey(e.target.value)}
         />
         <div className={styles.headersprof}>
-          <Profile/>
+          <Profile />
           <div>
             <h5>{userName}</h5>
             <p>مدیر</p>
           </div>
         </div>
-        <div className={styles.headerslog}>
-          <Logout
-            onClick={() => {
-              deleteCookie();
-              router.replace("/");
-            }}
-          />
+        <div
+          className={styles.headerslog}
+          onClick={() => {
+            deleteCookie();
+            router.replace("/");
+          }}
+        >
+          <Logout />
           <p>خروج</p>
         </div>
       </div>
       <div className={styles.addproduct}>
         <div>
           <Image
-          className={styles.settingImage}
+            className={styles.settingImage}
             src="/images/setting-3.png"
             alt="مدیریت کالا"
             width={30}
@@ -79,7 +80,7 @@ function DashboardUi({ ssrData, userName }) {
           <thead className={styles.thead}>
             <tr className={styles.tabelHeader}>
               <th> نام کالا</th>
-              <th > موجودی </th>
+              <th> موجودی </th>
               <th> قیمت</th>
               <th> شناسه کالا </th>
               <th className={styles.options}></th>

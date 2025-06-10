@@ -19,7 +19,7 @@ function CreateProduct({ props }) {
     <tr className={styles.tabelLine}>
       <td> {name} </td>
       <td> {quantity} </td>
-      <td> {price} هزار تومان</td>
+      <td> {price.toLocaleString()} هزار تومان</td>
       <td> {id} </td>
       <td className={styles.options}>
         <Edit onClick={editHandler}/>
